@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justice Token Swap - Assange DAO</title>
+  <!-- Use a pre-built Tailwind CSS stylesheet via CDN -->
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Chart.js for price chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <style>
+    /* Custom styles for button colors and mobile menu */
+    .bg-discord-blue {
+      background-color: #7289DA;
+    }
+    .hover\:bg-discord-blue-dark:hover {
+      background-color: #5B6EAE;
+    }
+    /* Ensure proper spacing and alignment for mobile */
+    @media (max-width: 767px) {
+      .mobile-menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section (Black background, white text) -->
+  <header class="bg-black text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/dao/index.html">
+        <img 
+          src="https://clocknft.com/dao/justice-token.png" 
+          alt="Assange DAO Logo" 
+          class="h-10"
+        />
+      </a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="/dao/index.html#about" class="hover:text-gray-300">About</a>
+        <a href="/dao/index.html#get-involved" class="hover:text-gray-300">Get Involved</a>
+        <a href="/dao/JUSTICE.html" class="hover:text-gray-300">Justice Token</a>
+        <a href="https://snapshot.box/#/s:assangedao.eth" class="hover:text-gray-300">Govern</a>
+        <a href="/dao/ClockNFT.html" class="hover:text-gray-300">Clock</a>
+        <a href="https://app.safe.global/home?safe=eth:0x7BE99ca4E6893ef57cf349ab56307628100feA00" class="hover:text-gray-300">Treasury</a>
+        <a href="/dao/index.html#faq" class="hover:text-gray-300">FAQ</a>
+      </nav>
+      <!-- Mobile Menu Toggle (CSS-only) -->
+      <div class="md:hidden">
+        <input type="checkbox" id="menu-toggle" class="hidden">
+        <label for="menu-toggle" class="cursor-pointer">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </label>
+        <nav class="mobile-menu hidden bg-gray-900 px-4 py-2 absolute top-16 left-0 w-full">
+          <a href="/dao/index.html#about" class="block py-2 hover:text-gray-300">About</a>
+          <a href="/dao/index.html#get-involved" class="block py-2 hover:text-gray-300">Get Involved</a>
+          <a href="/dao/JUSTICE.html" class="block py-2 hover:text-gray-300">Justice Token</a>
+          <a href="https://snapshot.box/#/s:assangedao.eth" class="block py-2 hover:text-gray-600">Govern</a>
+          <a href="/dao/ClockNFT.html" class="block py-2 hover:text-gray-300">Clock</a>
+          <a滚 href="https://app.safe.global/home?safe=eth:0x7BE99ca4E6893ef57cf349ab56307628100feA00" class="block py-2 hover:text-gray-300">Treasury</a>
+          <a href="/dao/index.html#faq" class="block py-2 hover:text-gray-300">FAQ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content (White background, black text) -->
+  <section class="py-16 bg-white text-black">
+    <div class="container mx-auto px-4">
+      <!-- Justice Token Logo -->
+      <div class="flex justify-center mb-6">
+        <img 
+          src="https://clocknft.com/dao/justice-token.png" 
+          alt="Justice Token Logo" 
+          class="w-32 h-32"
+        />
+      </div>
+      <h2 class="text-3xl font-bold mb-6 text-center">AssangeDAO's $JUSTICE Token</h2>
+      <div class="flex justify-center mb-6">
+        <iframe
+          src="https://app.uniswap.org/swap?theme=dark&inputCurrency=ETH&outputCurrency=0x59d1e836F7b7210A978b25a855085cc46fd090b5&exactField=input&exactAmount=1"
+          height="500px"
+          width="100%"
+          style="
+            border: 0;
+            margin: 0 auto;
+            display: block;
+            border-radius: 10px;
+            max-width: 600px;
+            min-width: 300px;
+          "
+        ></iframe>
+      </div>
+      <!-- Brief Info About JUSTICE Token -->
+      <div class="max-w-3xl mx-auto mb-12 text-center">
+        <p class="text-lg">
+          The Justice Governance Token ($JUSTICE) is an Ethereum-based ERC-20 token that governs the AssangeDAO. Its token address is <code class="text-sm font-mono bg-gray-100 px-1 rounded">0x59d1e836F7b7210A978b25a855085cc46fd090B5</code>. The total supply is 17,346,149,507 tokens, with none reserved for the DAO or paid to its founders or developers. $JUSTICE tokens were issued to contributors at a ratio of 1,000,000 per 1 ETH, and no further tokens can ever be minted.
+        </p>
+      </div>
+
+      <!-- JUSTICE Token Market Data -->
+      <div class="mt-12">
+        <h3 class="text-2xl font-semibold mb-6 text-center">JUSTICE Token Market Data</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <!-- Price in USD -->
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center">
+            <h4 class="text-lg font-semibold mb-2">Price (USD)</h4>
+            <p id="price-usd" class="text-xl font-bold text-green-400">Loading...</p>
+            <p id="price-change" class="text-sm mt-2"></p>
+          </div>
+          <!-- Price for 1 Million JUSTICE in ETH -->
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center">
+            <h4 class="text-lg font-semibold mb-2">Price (1M JUSTICE in ETH)</h4>
+            <p id="price-eth" class="text-xl font-bold text-green-400">Loading...</p>
+          </div>
+          <!-- 24-Hour Volume -->
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center">
+            <h4 class="text-lg font-semibold mb-2">24h Volume (USD)</h4>
+            <p id="volume-24h" class="text-xl font-bold text-green-400">Loading...</p>
+          </div>
+          <!-- Total Supply -->
+          <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 text-center">
+            <h4 class="text-lg font-semibold mb-2">Total Supply</h4>
+            <p id="total-supply" class="text-xl font-bold text-green-400">Loading...</p>
+          </div>
+        </div>
+        <!-- 7-Day Price Chart -->
+        <div class="mt-8 max-w-3xl mx-auto">
+          <h4 class="text-lg font-semibold mb-4 text-center">7-Day Price Chart (USD)</h4>
+          <canvas id="price-chart" height="200"></canvas>
+        </div>
+        <p class="text-sm text-gray-500 mt-4 text-center">
+          Data provided by CoinGecko | Last updated: <span id="last-updated">Loading...</span>
+        </p>
+        <!-- Exchanges Section -->
+        <div class="mt-8 max-w-3xl mx-auto">
+          <h4 class="text-lg font-semibold mb-4 text-center">Where to Buy/Trade JUSTICE</h4>
+          <ul class="list-disc list-inside text-left space-y-2">
+            <li>
+              <span class="font-medium">MEXC (JUSTICE/USDT):</span>
+              <a href="https://www.mexc.com/exchange/JUSTICE_USDT" class="text-blue-600 hover:underline" target="_blank">Trade on MEXC</a>
+            </li>
+            <li>
+              <span class="font-medium">Bitfinex (JUSTICE/USDT):</span>
+              <a href="https://trading.bitfinex.com/t/JUSTICE:USDT?type=exchange" class="text-blue-600 hover:underline" target="_blank">Trade on Bitfinex</a>
+            </li>
+            <li>
+              <span class="font-medium">Uniswap (JUSTICE/WETH):</span>
+              <a href="https://coinmarketcap.com/dexscan/ethereum/0xfe7aff6f4f1b0d9f65767e96573e6df8b1ff5920" class="text-blue-600 hover:underline" target="_blank">Trade on Uniswap</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section (White background, black text) -->
+  <footer class="bg-white text-black py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="mb-4">© 2025 Assange DAO. All rights reserved.</p>
+      <div class="flex justify-center space-x-4 flex-wrap">
+        <a href="https://twitter.com/AssangeDAO" class="hover:text-gray-600 mx-2">Twitter</a>
+        <a href="https://discord.com/invite/9h6rsvGWNn" class="hover:text-gray-600 mx-2">Discord</a>
+        <a href="https://forum.assangedao.org" class="hover:text-gray-600 mx-2">Forum</a>
+        <a href="https://assangedao.substack.com/" class="hover:text-gray-600 mx-2">Substack</a>
+        <a href="https://www.facebook.com/assangedao" class="hover:text-gray-600 mx-2">Facebook</a>
+        <a href="https://www.reddit.com/r/assangedao" class="hover:text-gray-600 mx-2">Reddit</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    async function fetchJusticeTokenData() {
+      const coinUrl = "https://api.coingecko.com/api/v3/coins/assangedao?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=false";
+      const chartUrl = "https://api.coingecko.com/api/v3/coins/assangedao/market_chart?vs_currency=usd&days=7&interval=daily";
+
+      try {
+        // Fetch price, volume, total supply, and price change data
+        const coinResponse = await fetch(coinUrl, {
+          headers: {
+            "X-CG-API-KEY": "CG-HvMxoG2AgAVbk3Cm48jLjjkq"
+          }
+        });
+
+        if (!coinResponse.ok) {
+          throw new Error(`HTTP error! status: ${coinResponse.status}`);
+        }
+
+        const data = await coinResponse.json();
+
+        // Extract data
+        const priceUSD = data.market_data.current_price.usd;
+        const priceETH = data.market_data.current_price.eth;
+        const priceChange24h = data.market_data.price_change_percentage_24h_in_currency.usd;
+        const volume24hUSD = data.market_data.total_volume.usd;
+        const totalSupply = data.market_data.total_supply;
+
+        // Calculate price for 1 million JUSTICE in ETH
+        const price1MEth = priceETH * 1000000;
+
+        // Update DOM elements
+        document.getElementById("price-usd").textContent = priceUSD ? `$${priceUSD.toFixed(6)}` : "Unavailable";
+        document.getElementById("price-eth").textContent = priceETH ? `${price1MEth.toFixed(6)} ETH` : "Unavailable";
+        document.getElementById("price-change").textContent = priceChange24h ? `24h Change: ${priceChange24h.toFixed(2)}%` : "";
+        document.getElementById("price-change").className = priceChange24h ? `text-sm mt-2 ${priceChange24h >= 0 ? 'text-green-400' : 'text-red-400'}` : "text-sm mt-2";
+        document.getElementById("volume-24h").textContent = volume24hUSD ? volume24hUSD.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }) : "Unavailable";
+        document.getElementById("total-supply").textContent = totalSupply ? totalSupply.toLocaleString('en-US') : "17,346,149,507";
+
+        // Fetch 7-day price chart data
+        const chartResponse = await fetch(chartUrl, {
+          headers: {
+            "X-CG-API-KEY": "CG-HvMxoG2AgAVbk3Cm48jLjjkq"
+          }
+        });
+
+        if (!chartResponse.ok) {
+          throw new Error(`HTTP error! status: ${chartResponse.status}`);
+        }
+
+        const chartData = await chartResponse.json();
+        const prices = chartData.prices; // Array of [timestamp, price] pairs
+
+        // Create 7-day price chart
+        const chartLabels = prices.map(entry => new Date(entry[0]).toLocaleDateString());
+        const chartPrices = prices.map(entry => entry[1]);
+        const ctx = document.getElementById("price-chart").getContext("2d");
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: chartLabels,
+            datasets: [{
+              label: 'Price (USD)',
+              data: chartPrices,
+              borderColor: '#34D399', // Tailwind's green-400
+              backgroundColor: 'rgba(52, 211, 153, 0.1)',
+              fill: true,
+              tension: 0.1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Date'
+                }
+              },
+              y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'Price (USD)'
+                },
+                beginAtZero: false
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+
+        // Update last updated timestamp
+        const now = new Date();
+        document.getElementById("last-updated").textContent = now.toLocaleString();
+      } catch (error) {
+        console.error("Error fetching JUSTICE Token data:", error);
+        document.getElementById("price-usd").textContent = "Unavailable";
+        document.getElementById("price-eth").textContent = "Unavailable";
+        document.getElementById("price-change").textContent = "";
+        document.getElementById("volume-24h").textContent = "Unavailable";
+        document.getElementById("total-supply").textContent = "17,346,149,507";
+        document.getElementById("last-updated").textContent = "N/A";
+      }
+    }
+
+    // Fetch data on page load
+    document.addEventListener("DOMContentLoaded", fetchJusticeTokenData);
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'936a6d7adf31bcf2',t:'MTc0NTcxNjA5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

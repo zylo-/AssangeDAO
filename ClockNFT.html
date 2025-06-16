@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Clock NFT by Pak & Julian Assange | AssangeDAO</title>
+  <meta name="description" content="Discover the Clock NFT by Pak and Julian Assange, sold for $53M to AssangeDAO to fund Assange's legal defence. A historic NFT supporting freedom of information.">
+  <meta name="keywords" content="Clock NFT, Pak, Julian Assange, AssangeDAO, NFT auction, legal defence, freedom of information, WikiLeaks, censorship">
+  <!-- Open Graph Tags for Social Media -->
+  <meta property="og:title" content="Clock NFT by Pak & Julian Assange | AssangeDAO">
+  <meta property="og:description" content="Discover the Clock NFT by Pak and Julian Assange, sold for $53M to AssangeDAO to fund Assange's legal defence. A historic NFT supporting freedom of information.">
+  <meta property="og:image" content="https://clocknft.com/clock-nft-pak-assange-assangedao.png">
+  <meta property="og:url" content="https://clocknft.com/">
+  <meta property="og:type" content="website">
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clock NFT by Pak & Julian Assange | AssangeDAO">
+  <meta name="twitter:description" content="Discover the Clock NFT by Pak and Julian Assange, sold for $53M to AssangeDAO to fund Assange's legal defence. A historic NFT supporting freedom of information.">
+  <meta name="twitter:image" content="https://clocknft.com/clock-nft-pak-assange-assangedao.png">
+  <!-- Canonical Tag -->
+  <link rel="canonical" href="https://clocknft.com/index.html">
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico">
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": "Clock NFT",
+    "description": "A dynamic NFT by Pak and Julian Assange that initially counted the days Assange had been imprisoned and now switched to days free, sold for $53 million to fund his legal defence.",
+    "creator": [
+      {
+        "@type": "Person",
+        "name": "Pak",
+        "sameAs": "https://www.pak.art/"
+      },
+      {
+        "@type": "Person",
+        "name": "Julian Assange",
+        "sameAs": "https://en.wikipedia.org/wiki/Julian_Assange"
+      }
+    ],
+    "dateCreated": "2022-02-09",
+    "artMedium": "DigitalArtwork",
+    "image": "https://clocknft.com/clock-nft-pak-assange-assangedao.png",
+    "url": "https://clocknft.com/",
+    "offers": {
+      "@type": "Offer",
+      "price": "53000000",
+      "priceCurrency": "USD",
+      "seller": {
+        "@type": "Organisation",
+        "name": "AssangeDAO",
+        "sameAs": "https://assangedao.org/"
+      }
+    },
+    "isPartOf": {
+      "@type": "Collection",
+      "name": "Censored Collection"
+    }
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Use a pre-built Tailwind CSS stylesheet via CDN -->
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+    }
+    /* Center only specific content elements */
+    .header,
+    .title,
+    .subtitle,
+    .svg-container,
+    .metadata,
+    .dynamic-info,
+    .sale-info {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header {
+      margin: 30px 0 20px 0;
+    }
+    .header img {
+      width: 250px;
+      height: auto;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .title a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .title a:hover {
+      color: #ccc;
+      text-decoration: underline;
+    }
+    .subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.8;
+      font-style: italic;
+    }
+    .svg-container {
+      width: 1000px;
+      max-width: none;
+      min-width: 0;
+      margin: 0;
+      transform: scale(0.43);
+      transform-origin: center top;
+      max-height: 430px;
+      overflow: visible;
+    }
+    .svg-container svg {
+      width: 100%;
+      height: auto;
+    }
+    .metadata {
+      margin: 2px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .metadata p {
+      margin: 0;
+    }
+    .sale-info {
+      font-size: 14px;
+      font-style: italic;
+      opacity: 0.7;
+      margin: 2px 0;
+    }
+    .sale-info a {
+      color: inherit; /* Matches the offwhite/gray tone due to parent's opacity */
+      text-decoration: none; /* Removes the default underline */
+      transition: color 0.3s ease; /* Matches the transition effect of other links */
+    }
+    .sale-info a:visited {
+      color: inherit; /* Prevents purple visited state, keeps it offwhite/gray */
+    }
+    .sale-info a:hover {
+      color: #ccc; /* Matches the hover color of other links */
+      text-decoration: underline; /* Matches the hover underline of other links */
+    }
+    .dynamic-info {
+      font-size: 14px;
+      font-style: italic;
+      opacity: 0.7;
+      margin: 2px 0;
+    }
+    /* Mobile adjustments */
+    @media (max-width: 1024px) {
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        justify-content: flex-start;
+      }
+      .header {
+        margin: 1px 0 2px 0; /* Top margin reduced from 2px to 1px (50% decrease) */
+      }
+      .header img {
+        width: 187px; /* Increased by 20% from 156px (156 * 1.2 ≈ 187.2px, rounded to 187px) */
+      }
+      .title {
+        font-size: 22px; /* Reduced from 23px by 5% (23 * 0.95 ≈ 21.85px, rounded to 22px) */
+      }
+      .subtitle {
+        font-size: 12px; /* Reduced from 13px by 5% (13 * 0.95 ≈ 12.35px, rounded to 12px) */
+        margin-bottom: 5px;
+      }
+      .metadata {
+        font-size: 14px; /* Reduced from 15px by 5% (15 * 0.95 ≈ 14.25px, rounded to 14px) */
+        margin: 5px 0;
+      }
+      .sale-info {
+        font-size: 12px; /* Reduced from 13px by 5% (13 * 0.95 ≈ 12.35px, rounded to 12px) */
+        margin: 5px 0;
+      }
+      .dynamic-info {
+        font-size: 12px; /* Reduced from 13px by 5% (13 * 0.95 ≈ 12.35px, rounded to 12px) */
+        margin: 5px 0;
+      }
+    }
+    /* Desktop adjustments (screens wider than 1025px) */
+    @media (min-width: 1025px) {
+      .header {
+        margin-top: 15px;
+      }
+      .svg-container {
+        transform: scale(0.516);
+        max-height: 516px;
+      }
+    }
+    /* Styles for the mobile menu toggle (JavaScript-based) */
+    .mobile-menu-toggle {
+      cursor: pointer;
+    }
+    .mobile-menu-wrapper {
+      position: fixed;
+      top: 4rem; /* Match the top position (64px = 4rem) */
+      left: 0;
+      width: 100%;
+      z-index: 1000; /* Ensure it appears above other content */
+      display: none; /* Initially hidden */
+    }
+    .mobile-menu-wrapper.is-active {
+      display: block; /* Show when toggled */
+    }
+    .mobile-menu {
+      width: 100%;
+      background-color: #1F2937; /* Matches bg-gray-900 */
+      padding: 0.5rem 1rem; /* Matches px-4 py-2 */
+    }
+    .mobile-menu a {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0; /* Matches py-2 */
+      color: #fff;
+    }
+    .mobile-menu a:hover {
+      color: #D1D5DB; /* Matches hover:text-gray-300 */
+    }
+    /* Ensure header and footer stretch full width */
+    header, footer {
+      width: 100%;
+      align-items: stretch;
+    }
+    footer .container {
+      max-width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Menu (Matching Other Pages) -->
+  <header class="bg-black text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/dao/index.html">
+        <img 
+          src="https://clocknft.com/dao/justice-token.png" 
+          alt="Assange DAO Logo" 
+          class="h-10"
+        />
+      </a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="/dao/index.html#about" class="hover:text-gray-300">About</a>
+        <a href="/dao/index.html#get-involved" class="hover:text-gray-300">Get Involved</a>
+        <a href="/dao/JUSTICE.html" class="hover:text-gray-300">Justice Token</a>
+        <a href="https://snapshot.box/#/s:assangedao.eth" class="hover:text-gray-300">Govern</a>
+        <a href="/dao/ClockNFT.html" class="hover:text-gray-300">Clock</a>
+        <a href="https://app.safe.global/home?safe=eth:0x7BE99ca4E6893ef57cf349ab56307628100feA00" class="hover:text-gray-300">Treasury</a>
+        <a href="/dao/index.html#faq" class="hover:text-gray-300">FAQ</a>
+      </nav>
+      <!-- Mobile Menu Toggle (JavaScript-based) -->
+      <div class="md:hidden">
+        <label class="mobile-menu-toggle">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </label>
+        <div class="mobile-menu-wrapper">
+          <nav class="mobile-menu">
+            <a href="/dao/index.html#about">About</a>
+            <a href="/dao/index.html#get-involved">Get Involved</a>
+            <a href="/dao/JUSTICE.html">Justice Token</a>
+            <a href="https://snapshot.box/#/s:assangedao.eth">Govern</a>
+            <a href="/dao/ClockNFT.html">Clock</a>
+            <a href="https://app.safe.global/home?safe=eth:0x7BE99ca4E6893ef57cf349ab56307628100feA00">Treasury</a>
+            <a href="/dao/index.html#faq">FAQ</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Original Content -->
+  <div class="header">
+    <a href="https://assangedao.org" title="Visit the AssangeDAO website">
+      <img src="https://clocknft.com/dao/logo.png" alt="AssangeDAO Logo">
+    </a>
+  </div>
+  <div class="title">
+    <a href="https://clocknft.com/clock.html" title="View the Clock NFT page">Clock</a> NFT
+  </div>
+  <div class="subtitle">Julian Assange x Pak</div>
+  <div class="svg-container" id="svg-container" aria-label="Dynamic Clock NFT artwork displaying the number of days Julian Assange has been free"></div>
+  <div class="metadata" id="metadata-container"></div>
+  <div class="dynamic-info">Now showing the days that Julian Assange has been free, this revolutionary NFT through its smart contract on Ethereum dynamically calculates and displays a graphic, updating its visuals each day the contract is read.</div>
+  <div class="sale-info">
+    <a href="https://etherscan.io/tx/0x19573812d40602d618b83d0673e0ef7d80530055564f92c1ab2ab08bdce7dfab" title="View transaction on Etherscan">Acquired for 16,593 ETH by AssangeDAO</a>. 100% of proceeds were donated by Pak to <a href="https://etherscan.io/address/0x5daea26517788b1c0ddb0200c6fa6d8248076143" title="View Wau Holland's Assange Defence Multisig address on Etherscan">Assange's defence project at Wau Holland Foundation</a>.
+  </div>
+
+  <!-- Updated Footer (Matching Other Pages) -->
+  <footer class="bg-white text-black py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="mb-4">© 2025 Assange DAO. All rights reserved.</p>
+      <div class="flex justify-center space-x-4 flex-wrap">
+        <a href="https://twitter.com/AssangeDAO" class="hover:text-gray-600 mx-2">Twitter</a>
+        <a href="https://discord.com/invite/9h6rsvGWNn" class="hover:text-gray-600 mx-2">Discord</a>
+        <a href="https://forum.assangedao.org" class="hover:text-gray-600 mx-2">Forum</a>
+        <a href="https://assangedao.substack.com/" class="hover:text-gray-600 mx-2">Substack</a>
+        <a href="https://www.facebook.com/assangedao" class="hover:text-gray-600 mx-2">Facebook</a>
+        <a href="https://www.reddit.com/r/assangedao" class="hover:text-gray-600 mx-2">Reddit</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+  <script>
+    // JavaScript for mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menuWrapper = document.querySelector('.mobile-menu-wrapper');
+
+      toggle.addEventListener('click', function() {
+        menuWrapper.classList.toggle('is-active');
+      });
+    });
+
+    const providerUrl = "https://mainnet.infura.io/v3/47db9235678945eb8d988b2a71d6e90e";
+    const jwtToken = null;
+
+    const fetchOptions = jwtToken ? {
+      headers: {
+        "Authorization": `Bearer ${jwtToken}`
+      }
+    } : {};
+
+    const provider = new ethers.providers.JsonRpcProvider(providerUrl, undefined, { fetchOptions });
+
+    const contractAddress = "0xDa22422592Ee3623c8d3c40Fe0059CdEcF30CA79";
+    const abi = ["function tokenURI(uint256 tokenId) view returns (string)"];
+
+    const contract = new ethers.Contract(contractAddress, abi, provider);
+
+    async function displayNFT() {
+      try {
+        const uri = await contract.tokenURI(1);
+
+        const jsonStart = uri.indexOf('data:application/json;utf8,') + 'data:application/json;utf8,'.length;
+        const jsonData = uri.substring(jsonStart);
+
+        const metadata = JSON.parse(jsonData.replace(/"$/, ''));
+
+        let svgData = metadata.image.replace('data:image/svg+xml;utf8,', '');
+
+        // Render the SVG without modifications
+        document.getElementById("svg-container").innerHTML = svgData;
+
+        const metadataContainer = document.getElementById("metadata-container");
+        metadataContainer.innerHTML = `
+          <p><strong>Name:</strong> ${metadata.name}</p>
+          <p><strong>Description:</strong> ${metadata.description.trim()}</p>
+          <p><strong>Created By:</strong> ${metadata.created_by}</p>
+        `;
+      } catch (e) {
+        console.error("Error fetching or displaying NFT image:", e);
+        console.error("Error details:", e.message, e.reason, e.code);
+        document.getElementById("metadata-container").innerHTML = `<p>Error loading metadata: ${e.message}</p>`;
+      }
+    }
+
+    displayNFT();
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'936a6d7a9c40827e',t:'MTc0NTcxNjA5NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
