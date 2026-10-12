@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$JUSTICE · AssangeDAO</title>
+  <link rel="icon" href="../img/justice-token.png" type="image/png">
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { background: #000 !important; margin: 0; padding: 0; color: #fff; }
+    header { width: 100% !important; }
+    .chart-wrap { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #2a2a2a; }
+    .chart-wrap iframe { width: 100%; height: 520px; border: 0; display: block; }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <header class="bg-black text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4">
+      <div class="nav">
+        <a class="nav-brand" href="../" aria-label="AssangeDAO">
+          <img src="../img/justice-token.png" alt="AssangeDAO">
+        </a>
+        <nav class="nav-links">
+          <a href="../">Home</a>
+          <a class="active" href="./">$JUSTICE</a>
+          <a href="../treasury/">Treasury</a>
+          <a href="../vote/">Vote</a>
+          <a href="../clock/">Clock</a>
+          <button id="langToggle" class="lang-btn">中文</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-12 text-center">
+    <div class="container mx-auto px-4">
+      <img src="../img/justice-token.png" alt="$JUSTICE" class="mx-auto mb-4" style="width:72px;height:72px;">
+      <h1 class="text-4xl font-bold mb-2" data-en="$JUSTICE" data-zh="$JUSTICE">$JUSTICE</h1>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-6" data-en="The governance token of AssangeDAO. Fixed supply. No further minting." data-zh="AssangeDAO 的治理代币。固定供应量。不再增发。">The governance token of AssangeDAO. Fixed supply. No further minting.</p>
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button id="addToken" class="bg-discord-blue text-white px-6 py-3 rounded-lg" data-en="Add to MetaMask" data-zh="添加到 MetaMask">Add to MetaMask</button>
+        <a href="https://app.uniswap.org/explore/pools/ethereum/0xfe7aff6f4f1b0d9f65767e96573e6df8b1ff5920" class="border border-gray-500 px-6 py-3 rounded-lg" target="_blank" rel="noopener">Uniswap</a>
+        <a href="https://etherscan.io/token/0x59d1e836F7b7210A978b25a855085cc46fd090B5" class="border border-gray-500 px-6 py-3 rounded-lg" target="_blank" rel="noopener">Etherscan</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="pb-8">
+    <div class="container mx-auto px-4">
+      <div class="stat-grid max-w-4xl mx-auto">
+        <div class="stat-card">
+          <span class="stat-label" data-en="Price" data-zh="价格">Price</span>
+          <strong id="price">—</strong>
+          <span class="stat-sub" id="priceChange"></span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label" data-en="Market Cap" data-zh="市值">Market Cap</span>
+          <strong id="mcap">—</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label" data-en="24h Volume" data-zh="24小时交易量">24h Volume</span>
+          <strong id="vol">—</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label" data-en="Total Supply" data-zh="总供应量">Total Supply</span>
+          <strong id="supply">—</strong>
+          <span class="stat-sub" data-en="No further mint" data-zh="不再增发">No further mint</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-4 text-center" data-en="Price Chart" data-zh="价格图表">Price Chart</h2>
+      <div class="chart-wrap max-w-4xl mx-auto">
+        <iframe src="https://dexscreener.com/ethereum/0xfe7aff6f4f1b0d9f65767e96573e6df8b1ff5920?embed=1&theme=dark&trades=0&info=0"></iframe>
+      </div>
+      <p class="text-center text-gray-500 text-sm mt-2">JUSTICE/WETH Uniswap v3 1% pool</p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white text-black">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl font-bold mb-6 text-center" data-en="Contract" data-zh="合约">Contract</h2>
+      <ul class="addr-list max-w-3xl mx-auto">
+        <li>
+          <span>$JUSTICE token</span>
+          <code data-copy="0x59d1e836F7b7210A978b25a855085cc46fd090B5">0x59d1e836F7b7210A978b25a855085cc46fd090B5</code>
+          <button type="button" class="copy-btn" data-copy="0x59d1e836F7b7210A978b25a855085cc46fd090B5">Copy</button>
+          <a href="https://etherscan.io/token/0x59d1e836F7b7210A978b25a855085cc46fd090B5">Etherscan</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="bg-black text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <a href="../" data-en="← Home" data-zh="← 首页">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+  <script src="../lang.js"></script>
+  <script src="../site-footer.js"></script>
+  <script>
+    async function loadStats() {
+      try {
+        const res = await fetch("https://api.coingecko.com/api/v3/coins/assangedao?localization=false&tickers=false&market_data=true");
+        const d = await res.json();
+        const md = d.market_data || {};
+        if (md.current_price?.usd) document.getElementById("price").textContent = "$" + Number(md.current_price.usd).toFixed(8);
+        if (md.price_change_percentage_24h != null) {
+          const el = document.getElementById("priceChange");
+          el.textContent = (md.price_change_percentage_24h >= 0 ? "+" : "") + md.price_change_percentage_24h.toFixed(2) + "% 24h";
+        }
+        if (md.market_cap?.usd) document.getElementById("mcap").textContent = "$" + Math.round(md.market_cap.usd).toLocaleString();
+        if (md.total_volume?.usd) document.getElementById("vol").textContent = "$" + Math.round(md.total_volume.usd).toLocaleString();
+        if (md.total_supply) document.getElementById("supply").textContent = Math.round(md.total_supply).toLocaleString();
+      } catch (e) { console.warn(e); }
+    }
+    document.addEventListener("DOMContentLoaded", loadStats);
+  </script>
+</body>
+</html>

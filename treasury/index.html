@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Treasury · AssangeDAO</title>
+  <link rel="icon" href="../img/justice-token.png" type="image/png">
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    body { background: #000 !important; margin: 0; padding: 0; color: #fff; }
+    .asset-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border-bottom: 1px solid #2a2a2a; }
+    .asset-row:last-child { border-bottom: 0; }
+    .asset-left { display: flex; align-items: center; gap: 12px; }
+    .asset-icon { width: 32px; height: 32px; border-radius: 50%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .asset-name { font-weight: 600; }
+    .asset-amt { color: #9aa0a6; font-size: 13px; }
+    .asset-right { text-align: right; }
+    .asset-usd { font-weight: 600; }
+    .section-title { font-size: 18px; font-weight: 600; margin: 24px 0 8px; }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <header class="bg-black text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4">
+      <div class="nav">
+        <a class="nav-brand" href="../" aria-label="AssangeDAO">
+          <img src="../img/justice-token.png" alt="AssangeDAO">
+        </a>
+        <nav class="nav-links">
+          <a href="../">Home</a>
+          <a href="../justice/">$JUSTICE</a>
+          <a class="active" href="./">Treasury</a>
+          <a href="../vote/">Vote</a>
+          <a href="../clock/">Clock</a>
+          <button id="langToggle" class="lang-btn">中文</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="py-10">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h1 class="text-3xl font-bold mb-1" data-en="Treasury" data-zh="国库">Treasury</h1>
+      <p class="text-gray-400 mb-6">assangedao.eth · 0x7BE99ca4E6893ef57cf349ab56307628100feA00</p>
+
+      <div class="stat-card mb-6" style="min-height:auto; padding:20px;">
+        <span class="stat-label" data-en="Total balance" data-zh="总余额">Total balance</span>
+        <strong id="totalUsd" style="font-size:32px;">—</strong>
+      </div>
+
+      <div class="section-title" data-en="Top assets" data-zh="主要资产">Top assets</div>
+      <div id="assets" class="bg-[#111] border border-[#2a2a2a] rounded-xl overflow-hidden"></div>
+
+      <div class="section-title" data-en="Positions" data-zh="仓位">Positions</div>
+      <div id="positions" class="bg-[#111] border border-[#2a2a2a] rounded-xl overflow-hidden"></div>
+
+      <p class="text-center mt-8">
+        <a href="https://app.safe.global/home?safe=eth:0x7BE99ca4E6893ef57cf349ab56307628100feA00" class="inline-block bg-discord-blue text-white px-6 py-3 rounded-lg" target="_blank" rel="noopener" data-en="Open in Safe" data-zh="在 Safe 中打开">Open in Safe</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="bg-white text-black py-8">
+    <div class="container mx-auto px-4 text-center">
+      <a href="../" data-en="← Home" data-zh="← 首页">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../lang.js"></script>
+  <script src="../site-footer.js"></script>
+  <script>
+    const SAFE = "0x7BE99ca4E6893ef57cf349ab56307628100feA00";
+    const OFFICIAL_JUSTICE = "0x59d1e836F7b7210A978b25a855085cc46fd090B5".toLowerCase();
+    const KNOWN = {
+      "eth": { name: "Ethereum", symbol: "ETH", icon: "Ξ" },
+      "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": { name: "Wrapped Ether", symbol: "WETH", icon: "W" },
+      "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0": { name: "Lido Wrapped Staked ETH", symbol: "wstETH", icon: "st" },
+      [OFFICIAL_JUSTICE]: { name: "AssangeDAO", symbol: "JUSTICE", icon: "⚖" }
+    };
+
+    async function load() {
+      try {
+        const res = await fetch(`https://safe-transaction-mainnet.safe.global/api/v1/safes/${SAFE}/balances/?trusted=false&exclude_spam=true`);
+        const data = await res.json();
+        const assets = [];
+        let total = 0;
+
+        for (const item of data) {
+          const addr = (item.tokenAddress || "eth").toLowerCase();
+          const known = KNOWN[addr];
+          if (!known && addr !== "eth") continue;
+          const dec = item.token?.decimals || 18;
+          const bal = Number(item.balance) / 10**dec;
+          if (bal < 0.0001) continue;
+          assets.push({ ...known, balance: bal, address: addr });
+        }
+
+        const cg = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum,lido-wrapped-staked-eth,assangedao&vs_currencies=usd").then(r => r.json());
+        const prices = {
+          ETH: cg.ethereum?.usd || 0,
+          WETH: cg.ethereum?.usd || 0,
+          wstETH: cg["lido-wrapped-staked-eth"]?.usd || cg.ethereum?.usd || 0,
+          JUSTICE: cg.assangedao?.usd || 0
+        };
+
+        const container = document.getElementById("assets");
+        container.innerHTML = assets.map(a => {
+          const usd = (a.balance * (prices[a.symbol] || 0));
+          total += usd;
+          return `<div class="asset-row">
+            <div class="asset-left">
+              <div class="asset-icon">${a.icon}</div>
+              <div>
+                <div class="asset-name">${a.name}</div>
+                <div class="asset-amt">${a.balance.toLocaleString(undefined,{maximumFractionDigits:4})} ${a.symbol}</div>
+              </div>
+            </div>
+            <div class="asset-right">
+              <div class="asset-usd">$${usd.toLocaleString(undefined,{maximumFractionDigits:0})}</div>
+            </div>
+          </div>`;
+        }).join("");
+
+        document.getElementById("totalUsd").textContent = "$" + Math.round(total).toLocaleString();
+
+        document.getElementById("positions").innerHTML = `
+          <div class="asset-row">
+            <div class="asset-left">
+              <div class="asset-icon">🦄</div>
+              <div>
+                <div class="asset-name">Uniswap V3</div>
+                <div class="asset-amt">JUSTICE/WETH 1% position</div>
+              </div>
+            </div>
+            <div class="asset-right">
+              <a href="https://app.uniswap.org/explore/pools/ethereum/0xfe7aff6f4f1b0d9f65767e96573e6df8b1ff5920" target="_blank" class="text-blue-400 text-sm">View pool</a>
+            </div>
+          </div>`;
+      } catch (e) {
+        document.getElementById("assets").innerHTML = '<div class="p-4 text-gray-400">Could not load balances</div>';
+        console.error(e);
+      }
+    }
+    load();
+  </script>
+</body>
+</html>
