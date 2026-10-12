@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AssangeDAO Vote</title>
+  <meta name="description" content="Vote on AssangeDAO Snapshot proposals with $JUSTICE. Gasless signature, official Snapshot hub." />
+  <link rel="icon" href="./img/justice-token.png" type="image/png" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="bg-black text-white sticky top-0 z-50 shadow-lg">
+    <div class="container mx-auto px-4">
+      <div class="nav">
+        <a class="nav-brand" href="../" aria-label="AssangeDAO">
+          <img src="./img/justice-token.png" alt="AssangeDAO" />
+        </a>
+        <nav class="nav-links">
+          <a href="../">Home</a>
+          <a href="../justice/">$JUSTICE</a>
+          <a href="../treasury/">Treasury</a>
+          <a class="active" href="./">Vote</a>
+          <a href="../clock/">Clock</a>
+          <button id="langToggle" class="lang-btn">中文</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="hero">
+      <img class="wordmark" src="./img/logo.png" alt="AssangeDAO" />
+      <h1>AssangeDAO Vote</h1>
+      <p>Official <strong>assangedao.eth</strong> Snapshot space. Voting power is your $JUSTICE balance at the proposal snapshot block. Signing a vote is gasless.</p>
+    </section>
+
+    <div class="side-actions" style="margin-bottom:18px;justify-content:flex-end;">
+      <div class="wallet-wrap">
+        <button class="wallet-btn" id="walletBtn" type="button">Connect wallet</button>
+        <div class="wallet-menu" id="walletMenu" hidden>
+          <button type="button" id="switchBtn">Switch account</button>
+          <button type="button" id="disconnectBtn">Disconnect</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="app"></div>
+  </div>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Assange DAO</p>
+      <div class="site-footer-links">
+        <a href="https://x.com/AssangeDAO">X</a>
+        <a href="https://discord.com/invite/9h6rsvGWNn">Discord</a>
+        <a href="https://t.me/Real_AssangeDAO" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://forum.assangedao.org/">Forum</a>
+        <a href="https://assangedao.substack.com/">Substack</a>
+        <a href="./">Snapshot</a>
+      </div>
+    </div>
+  </footer>
+  <script src="./ethers.umd.min.js"></script>
+  <script src="./app.js"></script>
+  <script src="../lang.js"></script>
+  <script src="../site-footer.js"></script>
+</body>
+</html>
